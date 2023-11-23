@@ -1,13 +1,6 @@
 import smtplib
 from email.message import EmailMessage
 from twilio.rest import Client
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
-
-PASSWORD = os.getenv("PASSWORD")
-AUTH_TOKEN = os.getenv("AUTH_TOKEN")  
 
 # send mail
 def send_mail(data):
@@ -20,13 +13,13 @@ def send_mail(data):
     with smtplib.SMTP(host='smtp.gmail.com', port=587) as smtp:
         smtp.ehlo()
         smtp.starttls()
-        smtp.login('afeezdev@gmail.com', PASSWORD)
+        smtp.login('afeezdev@gmail.com', 'zpgzrqaxstylcagq')
         smtp.send_message(email)
 
 # send sms 
 def send_sms(data):
     account_sid = 'AC4235167a2f7e0e3c6c37de777052162b'
-    auth_token = AUTH_TOKEN
+    auth_token = '5bfa12e5ff272e020331a9350e497e4c'
     client = Client(account_sid, auth_token)
     message = client.messages.create(
         from_='+447481345912',
