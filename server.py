@@ -1,6 +1,6 @@
 from flask import Flask, render_template, url_for, request, redirect
 import csv
-from sms_mail  import send_mail
+from send_mail  import send_mail
 
 app = Flask(__name__)
 
