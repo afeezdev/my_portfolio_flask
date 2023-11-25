@@ -1,5 +1,6 @@
 from flask import Flask, render_template, url_for, request, redirect
 import csv
+from sms_mail  import send_mail
 
 app = Flask(__name__)
 
@@ -35,6 +36,7 @@ def submit_form():
             data = request.form.to_dict()
             if (data["email"] and data["subject"]) or data["message"]!= '':
                 write_to_csv(data)
+                send_mail(data)
                 return redirect('/thankyou.html')
             else:
                 return '<h1>Ooops!!!, you can not leave the email and message empty</h1>'
