@@ -2,7 +2,11 @@ import smtplib
 from email.message import EmailMessage
 
 import os  
+from dotenv import load_dotenv
 
+load_dotenv()
+
+PASSWORD = os.getenv("PASSWORD")
 # send mail
 def send_mail(data):
     email = EmailMessage()
@@ -14,6 +18,6 @@ def send_mail(data):
     with smtplib.SMTP(host='smtp.gmail.com', port=587) as smtp:
         smtp.ehlo()
         smtp.starttls()
-        smtp.login('afeezdev@gmail.com', 'zpgzrqaxstylcagq')
+        smtp.login('afeezdev@gmail.com', PASSWORD)
         smtp.send_message(email)
 
